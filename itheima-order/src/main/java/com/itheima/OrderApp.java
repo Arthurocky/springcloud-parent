@@ -3,9 +3,12 @@ package com.itheima;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+//http客户端Feign 第二步：开启Feign
+@EnableFeignClients
 @SpringBootApplication
 public class OrderApp {
 
@@ -23,11 +26,4 @@ public class OrderApp {
         return new RestTemplate();
     }
 
-    //设置负载均衡策略：不常用
-    //在配置文件中设置ribbon
-    /*
-    @Bean
-    public IRule randomRule(){
-        return new RandomRule();
-    }*/
 }

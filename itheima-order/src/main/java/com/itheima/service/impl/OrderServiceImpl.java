@@ -1,5 +1,6 @@
 package com.itheima.service.impl;
 
+import com.itheima.client.UserClient;
 import com.itheima.dao.OrderDao;
 import com.itheima.order.pojo.OrderInfo;
 import com.itheima.service.OrderService;
@@ -18,6 +19,9 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private RestTemplate restTemplate;
 
+    @Resource
+    private UserClient userClient;
+
     /**
      * 根据ID查询订单信息
      */
@@ -33,8 +37,13 @@ public class OrderServiceImpl implements OrderService {
         //String url = "http://localhost:18081/user/"+orderInfo.getUserId();
         //User user = restTemplate.getForObject(url, User.class);
 
-        String url = "http://itheima-user/user/" + orderInfo.getUserId();
-        User user = restTemplate.getForObject(url, User.class);
+        //String url = "http://itheima-user/user/" + orderInfo.getUserId();
+        //User user = restTemplate.getForObject(url, User.class);
+        //使用feign提高代码的可读性，同时使url易于维护
+
+        //http客户端Feign 第四步：注入远程调用接口 再调用即可
+        User user = userClient.one(orderInfo.getUserId());
+
         //3.封装user到订单中
         orderInfo.setUser(user);
         //4.返回订单信息
