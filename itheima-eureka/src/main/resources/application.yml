@@ -9,7 +9,5 @@ spring:
 #注册中心的配置
 eureka:
   client:
-    register-with-eureka: false   #是否将自己(itheima-eureka)注册到Eureka中
+    register-with-eureka: false   #是否将自己注册到Eureka中
     fetch-registry: false   #是否从eureka中获取服务信息
-    instance:lease-renewal-interval-in-seconds: 30 # 心跳周期，默认是30秒
-    lease-expiration-duration-in-seconds: 90 # 心跳失败最长超时间，默认90秒

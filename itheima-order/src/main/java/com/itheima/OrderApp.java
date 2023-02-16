@@ -24,4 +24,13 @@ public class OrderApp {
         return new RestTemplate();
     }
 
+    //设置负载均衡策略：不常用
+    //在配置文件中设置ribbon
+/*
+    @Bean
+    public IRule randomRule(){
+        return new RandomRule();
+    }*/
+
+
 }
