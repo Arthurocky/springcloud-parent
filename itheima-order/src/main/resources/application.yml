@@ -1,0 +1,10 @@
+server:
+  port: 18082
+spring:
+  application:
+    name: itheima-order
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud_order?characterEncoding=UTF8&&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
