@@ -1,0 +1,65 @@
+server:
+  port: 18082
+spring:
+  application:
+    name: itheima-order #微服务架构中 应用名称必须配置
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud-order?characterEncoding=UTF8&&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+    Itheima-user:
+      ribbon:
+        NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #负载均衡规则
+#注册用户微服务  第二步：配置
+eureka:
+  client:
+    service-url:
+      #注册中心的服务地址
+      defaultZone: http://localhost:8001/eureka
+  #实例
+  instance:
+    #false:微服务注册的时候默认以服务器名称来注册   true:以IP地址来注册
+    prefer-ip-address: true
+    #实例的唯一标识 例子：itheima-order:18082:1.0-SNAPSHOT
+    instance-id: ${spring.application.name}:${server.port}:@project.version@
+
+#Ribbon负载均衡 改为随机策略
+itheima-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#配置饥饿加载
+ribbon:
+  eager-load:
+    #默认false是懒加载
+    #true:开启饥饿加载（项目启动连接eureka加载服务列表）
+    enabled: true
+    #itheima-user:饥饿加载服务名称
+    clients: itheima-user
+
+#自定义Feign的配置 第一步：springboot日志配置
+logging:
+  pattern:
+    console: '%d{HH:mm:ss} %-5level %msg [%thread] - %logger{15}%n\'
+  level:
+    root: info
+    com:
+      itheima: debug
+#自定义Feign的配置 第二步：配置Feign日志配置
+feign:
+  client:
+    config:
+      #局部配置 只针对用户微服务打印日志
+      itheima-user:
+        #包含四种不同的级别：NONE、BASIC、HEADERS、FULL
+        #补充 开发阶段：FULL 生产阶段：BASIC
+        loggerLevel: FULL
+  #Feign的性能优化-连接池配置 第二步：配置httpclient连接池
+  httpclient:
+    #开启Feign对httpclient的支持
+    enabled: true
+    #最大连接数
+    max-connections: 200
+    #每个路径的最大连接数
+    max-connections-per-route: 50

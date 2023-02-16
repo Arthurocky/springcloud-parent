@@ -12,6 +12,7 @@
         <module>itheima-user</module>
         <module>itheima-pojo</module>
         <module>itheima-eureka</module>
+        <module>itheima-api</module>
     </modules>
 
     <parent>

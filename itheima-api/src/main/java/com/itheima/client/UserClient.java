@@ -15,12 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 @FeignClient(value = "itheima-user")
 public interface UserClient {
-
     /***
      * 根据id查询用户详情
      */
     @GetMapping(value = "user/{id}")
     public User one(@PathVariable(value = "id") Long id);
-
-
 }

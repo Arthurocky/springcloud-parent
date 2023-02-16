@@ -1,5 +1,6 @@
 package com.itheima;
 
+import com.itheima.client.UserClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -8,6 +9,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 //http客户端Feign 第二步：开启Feign
+//FeignClient无法使用 方式一：导入对象
+//@EnableFeignClients(clients = UserClient.class)
+//FeignClient无法使用 方式二：包扫描
+//@EnableFeignClients(basePackages = {"aaa.itheima","com.itheima"})
 @EnableFeignClients
 @SpringBootApplication
 public class OrderApp {
