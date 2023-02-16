@@ -8,3 +8,15 @@ spring:
     url: jdbc:mysql://localhost:3306/cloud-order?characterEncoding=UTF8&&serverTimezone=Asia/Shanghai
     username: root
     password: root
+#注册用户微服务  第二步：配置
+eureka:
+  client:
+    service-url:
+      #注册中心的服务地址
+      defaultZone: http://localhost:8001/eureka
+  #实例
+  instance:
+    #false:微服务注册的时候默认以服务器名称来注册   true:以IP地址来注册
+    prefer-ip-address: true
+    #实例的唯一标识 例子：itheima-order:18082:1.0-SNAPSHOT
+    instance-id: ${spring.application.name}:${server.port}:@project.version@

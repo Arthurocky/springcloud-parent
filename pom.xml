@@ -11,6 +11,7 @@
         <module>itheima-order</module>
         <module>itheima-user</module>
         <module>itheima-pojo</module>
+        <module>itheima-eureka</module>
     </modules>
 
     <parent>
