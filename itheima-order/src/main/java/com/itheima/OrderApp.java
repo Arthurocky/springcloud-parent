@@ -13,7 +13,6 @@ public class OrderApp {
         SpringApplication.run(OrderApp.class,args);
     }
 
-
     /**
      * 微服务远程调用
      * 第一步：注册RestTemplate对象
@@ -26,11 +25,9 @@ public class OrderApp {
 
     //设置负载均衡策略：不常用
     //在配置文件中设置ribbon
-/*
+    /*
     @Bean
     public IRule randomRule(){
         return new RandomRule();
     }*/
-
-
 }

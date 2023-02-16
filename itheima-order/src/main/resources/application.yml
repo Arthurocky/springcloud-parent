@@ -24,3 +24,16 @@ eureka:
     prefer-ip-address: true
     #实例的唯一标识 例子：itheima-order:18082:1.0-SNAPSHOT
     instance-id: ${spring.application.name}:${server.port}:@project.version@
+
+#Ribbon负载均衡 改为随机策略
+itheima-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#配置饥饿加载
+ribbon:
+  eager-load:
+    #默认false是懒加载
+    #true:开启饥饿加载（项目启动连接eureka加载服务列表）
+    enabled: true
+    #itheima-user:饥饿加载服务名称
+    clients: itheima-user
