@@ -7,7 +7,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/cloud-user?characterEncoding=UTF8&&serverTimezone=Asia/Shanghai
     username: root
-    password: admin
+    password: root
   #快速入门-服务注册到Nacos  第三步 Nacos连接配置
   cloud:
     nacos:
