@@ -11,22 +11,26 @@
 
     <artifactId>itheima-api</artifactId>
 
+
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <!--表示项目拷贝时的字符编码，及项目整体代码的字符为utf-8-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--表示源文件的版本-->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <!--表示编译时候的版本-->
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
+        <!--http客户端Feign 第一步：引入openFeign依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
             <groupId>com.itheima</groupId>
-            <artifactId>itheima-pojo</artifactId>
+            <artifactId>itheima-user</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
-
 </project>

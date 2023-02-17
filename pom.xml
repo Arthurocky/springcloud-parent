@@ -11,7 +11,6 @@
         <module>itheima-order</module>
         <module>itheima-user</module>
         <module>itheima-pojo</module>
-        <module>itheima-eureka</module>
         <module>itheima-api</module>
     </modules>
 
@@ -38,6 +37,7 @@
         </dependency>
     </dependencies>
 
+    <!--版本锁定 spring cloud-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -53,6 +53,16 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.version}</version>
             </dependency>
+
+            <!--快速入门-服务注册到Nacos  第一步 使用alibaba依赖进行版本锁定-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.2.5.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>
