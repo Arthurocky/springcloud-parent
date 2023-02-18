@@ -16,6 +16,9 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Value("${person.name}")
+    private String name;
+
     @Value("${server.port}")
     private int port;
 
@@ -28,5 +31,15 @@ public class OrderController {
         System.out.println("订单端口 "+port);
         return orderService.findById(id);
     }
+
+
+    /**
+     * 统一配置管理-测试 看是否能够获取到nacos中配置的值
+     */
+    @GetMapping
+    public String xiaohong(){
+        return name+"=====";
+    }
+
 }
 

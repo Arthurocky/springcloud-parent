@@ -2,7 +2,11 @@ server:
   port: 18082
 spring:
   application:
+    #统一配置管理 文件名
     name: itheima-order
+    #统一配置管理 文件名
+  profiles:
+    active: test
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/cloud-order?characterEncoding=UTF8&&serverTimezone=Asia/Shanghai
@@ -15,7 +19,15 @@ spring:
       #Nacos服务分级存储模型 集群名称配置
       discovery:
         cluster-name: SZ
-
+        #环境隔离 配置当前是开发环境 test
+        #namespace: e97d5c29-a9bf-4c3d-90d3-8863327f643b
+        namespace: 3ce572ca-30ff-46df-8429-bedaafe49e0a
+        #默认是临时实例，停止服务注册信息被删除 非临时实例，注册信息不会被删除
+        #ephemeral: false
+      #统一配置管理 文件后缀
+      config:
+        file-extension: yaml
+        namespace: 3ce572ca-30ff-46df-8429-bedaafe49e0a
 #Ribbon负载均衡 改为随机策略
 itheima-user:
   ribbon:

@@ -15,3 +15,5 @@ spring:
       #Nacos服务分级存储模型 集群名称配置
       discovery:
         cluster-name: SZ
+        #设置环境隔离：配置当前开发环境  dev
+        namespace: e97d5c29-a9bf-4c3d-90d3-8863327f643b
