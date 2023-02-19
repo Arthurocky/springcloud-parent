@@ -16,4 +16,4 @@ spring:
       discovery:
         cluster-name: SZ
         #设置环境隔离：配置当前开发环境  dev
-        namespace: e97d5c29-a9bf-4c3d-90d3-8863327f643b
+        namespace: 3ce572ca-30ff-46df-8429-bedaafe49e0a
